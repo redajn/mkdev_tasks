@@ -13,4 +13,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN bundle install -j $(nproc) --path $GEM_HOME && yarn install
+RUN gem install bundler
+RUN bundle update --bundler
+RUN bundle install -j $(nproc) && yarn install
