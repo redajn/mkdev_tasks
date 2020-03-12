@@ -1,0 +1,3 @@
+mailer:
+  email: 'from@example.com'
+  layout: 'mailer'
