@@ -14,6 +14,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'config'
 gem 'bootstrap', '~> 4.4.1'
 gem 'slim-rails'
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 
 group :development, :test do
   gem "rails-controller-testing"

@@ -1,0 +1,30 @@
+.conteiner
+  .row
+    .col-1
+    .col
+      h2= "#{@event.title}"
+  .row
+    .col-1
+    .col
+      p= "#{@event.description}"
+  .row
+    .col-1
+    .col
+      p= "Event time: #{@event.starttime} - #{@event.endtime}"
+  .row
+    .col-1
+    .col
+      p= "#{@event.location}"
+  .row
+    .col-1
+    .col
+      p= "Contact via #{@event.organizeremail} or #{@event.organizertelegram}"
+  .row
+    .col-1
+    .col
+      p= "#{@event.link}"
+  .row
+    .col-1
+    .col
+      = link_to 'Back to main', root_path
+

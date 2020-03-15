@@ -1,7 +1,69 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+event_list = [
+  { title: 'Anniversary event',
+    desctiption: 'Jast some event like u see early',
+    location: 'St. Petersburg',
+    starttime: "2020-02-01T08:00:00",
+    endtime: "2020-02-01T20:00:00",
+    organizeremail: 'irganizer@mail.com',
+    organizertelegram: '@organizer',
+    link: 'http://goodevent.com'
+  },
+  { title: 'Chrismas Event',
+    desctiption: 'And another event',
+    location: 'Moscow',
+    starttime: "2020-01-15T20:00:00",
+    endtime: "2020-01-15T22:00:00",
+    organizeremail: 'irganizer@mail.com',
+    organizertelegram: '@organizer',
+    link: 'http://anothervent.com'
+  },
+  { title: 'Summer event',
+    desctiption: 'Summer event',
+    location: 'Ibiza',
+    starttime: "2020-06-10T20:00:00",
+    endtime: "2020-06-11T10:00:00",
+    organizeremail: 'irganizer@mail.com',
+    organizertelegram: '@organizer',
+    link: 'http://andanotheroneevent.com'
+  },
+  { title: 'Internetional 2020',
+    desctiption: 'Dota champ',
+    location: 'Stockholm',
+    starttime: "2020-08-10T20:00:00",
+    endtime: "2020-08-20T10:00:00",
+    organizeremail: 'irganizer@mail.com',
+    organizertelegram: '@organizer',
+    link: 'http://andanotheroneevent.com'
+  },
+  { title: 'Olimpic game',
+    desctiption: 'asdasdad',
+    location: 'Ibiza',
+    starttime: "2020-06-10T20:00:00",
+    endtime: "2020-06-11T10:00:00",
+    organizeremail: 'irganizer@mail.com',
+    organizertelegram: '@organizer',
+    link: 'http://andanotheroneevent.com'
+  },
+  { title: 'Any holidays',
+    desctiption: 'Summer event',
+    location: 'Ibiza',
+    starttime: "2020-06-10T20:00:00",
+    endtime: "2020-06-11T10:00:00",
+    organizeremail: 'irganizer@mail.com',
+    organizertelegram: '@organizer',
+    link: 'http://andanotheroneevent.com'
+  },
+]
+
+event_list.each do |attributes|
+  event = Event.new
+  event.title = attributes[:title]
+  event.description = attributes[:description]
+  event.location = attributes[:location]
+  event.starttime = attributes[:starttime]
+  event.endtime = attributes[:endtime]
+  event.organizeremail = attributes[:organizeremail]
+  event.organizertelegram = attributes[:organizertelegram]
+  event.link = attributes[:link]
+  event.save
+end

@@ -1,15 +1,21 @@
 .conteiner
-  - @events.each do |event|
-    .row
-      .col-1
-      .col-2
-        .row
-          .col
-            .alert.alert-dark
-              = link_to "#{event.title}", event_path(event), class: 'alert-link'
-          .col
-            .alert.alert-danger
-              = link_to 'delete', event_path(event), method: :delete, data: { confirm: 'Are you sure?' }, class: 'alert-link'
+  .row
+    .col-1
+    .col
+      h1= 'Events list'
+  .row
+    .col-1
+    .col-3
+      - @events.each do |event|
+          .row
+            .col
+              .alert.alert-dark
+                = link_to "#{event.title}", event_path(event), class: 'alert-link'
 
-
-td= link_to 'New event', new_event_path
+    .col-3
+      .alert.alert-dark
+        = link_to 'new', new_event_path, class: 'alert-link'
+  .row
+    .col-1
+    .col
+      = paginate @events, theme: 'twitter-bootstrap-4'
