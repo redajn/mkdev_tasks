@@ -1,0 +1,69 @@
+= form_with(model: @event, url: event_path(@event), local: true) do |f|
+    .row
+      .col-1
+      .col
+        = f.label "Title"
+    .row
+      .col-1
+      .col
+        = f.text_field :title
+    .row
+      .col-1
+      .col
+        = f.label "Description"
+    .row
+      .col-1
+      .col
+        = f.text_field :description
+    .row
+      .col-1
+      .col
+        = f.label "Location"
+    .row
+      .col-1
+      .col
+        = f.text_field :location
+    .row
+      .col-1
+      .col
+        = f.label "Start time"
+    .row
+      .col-1
+      .col
+        = f.datetime_field :starttime, value: @event.starttime&.strftime("%Y-%m-%dT%H:%M:%S")
+    .row
+      .col-1
+      .col
+        = f.label "End time"
+    .row
+      .col-1
+      .col-2
+        = f.datetime_field :endtime, value: @event.endtime&.strftime("%Y-%m-%dT%H:%M:%S")
+    .row
+      .col-1
+      .col
+        = f.label "Organizer email"
+    .row
+      .col-1
+      .col-2
+        = f.text_field :organizeremail
+    .row
+      .col-1
+      .col
+        = f.label "Organizer telegram"
+    .row
+      .col-1
+      .col-2
+        = f.text_field :organizertelegram
+    .row
+      .col-1
+      .col
+        = f.label "Link"
+    .row
+      .col-1
+      .col-2
+        = f.text_field :link
+    .row
+      .col-1
+      .col
+        = f.submit 'Submit'
