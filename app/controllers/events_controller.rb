@@ -34,13 +34,13 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to root_path
+    redirect_to events_path
   end
 
   private
 
   def set_event
-    @event = Event.find(params[:format])
+    @event = Event.find(params[:id])
   end
 
   def event_params

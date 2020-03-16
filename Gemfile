@@ -18,6 +18,8 @@ gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
 
 group :development, :test do
+  gem "factory_bot_rails"
+  gem "pry-rails"
   gem "rails-controller-testing"
   gem "rspec-rails", "~> 4.0.0.beta"
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -31,6 +33,7 @@ group :development do
 end
 
 group :test do
+  gem 'shoulda-matchers'
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'webdrivers'
