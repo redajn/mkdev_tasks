@@ -1,69 +1,69 @@
-= form_with(model: @event, local: true) do |f|
+= simple_form_for @event do |f|
     .row
       .col-1
       .col
-        = f.label "Title*"
+        = f.label t('.title')
     .row
       .col-1
       .col
-        = f.text_field :title
+        = f.input_field :title
     .row
       .col-1
       .col
-        = f.label "Description"
+        = f.label t('.description')
     .row
       .col-1
       .col
-        = f.text_field :description
+        = f.input_field :description
     .row
       .col-1
       .col
-        = f.label "Location"
+        = f.label t('.location')
     .row
       .col-1
       .col
-        = f.text_field :location
+        = f.input_field :location
     .row
       .col-1
       .col
-        = f.label "Start time"
+        = f.label t('.start_time')
     .row
       .col-1
       .col
-        = f.datetime_field :starttime, value: @event.starttime&.strftime("%Y-%m-%dT%H:%M:%S")
+        = f.input_field :start_time, value: @event.start_time&.strftime("%Y-%m-%dT%H:%M:%S")
     .row
       .col-1
       .col
-        = f.label "End time"
+        = f.label t('.end_time')
     .row
       .col-1
       .col-2
-        = f.datetime_field :endtime, value: @event.endtime&.strftime("%Y-%m-%dT%H:%M:%S")
+        = f.input_field :end_time, value: @event.end_time&.strftime("%Y-%m-%dT%H:%M:%S")
     .row
       .col-1
       .col
-        = f.label "Organizer email*"
+        = f.label t('.email')
     .row
       .col-1
       .col-2
-        = f.text_field :organizeremail
+        = f.input_field :organizer_email
     .row
       .col-1
       .col
-        = f.label "Organizer telegram"
+        = f.label t('.telegram')
     .row
       .col-1
       .col-2
-        = f.text_field :organizertelegram
+        = f.input_field :organizer_telegram
     .row
       .col-1
       .col
-        = f.label "Link"
+        = f.label t('.link')
     .row
       .col-1
       .col-2
-        = f.text_field :link
+        = f.input_field :link
     .row
       .col-1
       .col
-        = f.submit 'Submit'
+        = f.submit t('common.submit')

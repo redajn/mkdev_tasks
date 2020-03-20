@@ -10,7 +10,7 @@
   .row
     .col-1
     .col
-      p= "Event time: #{@event.starttime} - #{@event.endtime}"
+      p= "Event time: #{@event.start_time} - #{@event.end_time}"
   .row
     .col-1
     .col
@@ -18,7 +18,7 @@
   .row
     .col-1
     .col
-      p= "Contact via #{@event.organizeremail} or #{@event.organizertelegram}"
+      p= "Contact via #{@event.organizer_email} or #{@event.organizer_telegram}"
   .row
     .col-1
     .col
@@ -26,5 +26,5 @@
   .row
     .col-1
     .col
-      = link_to 'Back to main', root_path
+      = link_to t('common.home'), root_path
 

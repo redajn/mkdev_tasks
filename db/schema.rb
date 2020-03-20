@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 2020_03_13_101212) do
     t.string "title", null: false
     t.text "description"
     t.string "location"
-    t.datetime "starttime"
-    t.datetime "endtime"
-    t.string "organizeremail", null: false
-    t.string "organizertelegram"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string "organizer_email", null: false
+    t.string "organizer_telegram"
     t.string "link"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

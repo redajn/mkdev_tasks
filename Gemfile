@@ -16,6 +16,7 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'slim-rails'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
+gem 'simple_form'
 
 group :development, :test do
   gem "factory_bot_rails"

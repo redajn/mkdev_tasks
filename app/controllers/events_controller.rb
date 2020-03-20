@@ -17,7 +17,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to @event
+      redirect_to event_path(@event)
     else
       render :edit
     end
@@ -26,7 +26,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
-      redirect_to @event
+      redirect_to event_path(@event)
     else
       render :new
     end
@@ -48,10 +48,10 @@ class EventsController < ApplicationController
       :title,
       :description,
       :location,
-      :starttime,
-      :endtime,
-      :organizeremail,
-      :organizertelegram,
+      :start_time,
+      :end_time,
+      :organizer_email,
+      :organizer_telegram,
       :link
     )
   end

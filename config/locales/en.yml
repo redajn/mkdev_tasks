@@ -1,2 +1,25 @@
 en:
-  hello: "Hello world"
+  common:
+    home: 'Home page'
+    back: 'Back'
+    show: 'Show'
+    edit: 'Edit'
+    destroy: 'Delete'
+    submit: 'Save'
+    confirm: 'Are you sure?'
+  events:
+    index:
+      header: 'Events list'
+    new:
+      header: 'Create event'
+    form:
+      title: 'Title'
+      description: 'Description'
+      location: 'Location'
+      start_time: 'Start time'
+      end_time: 'End_time'
+      email: 'Organizer email'
+      telegram: 'Organizer telegram'
+      link: 'Event link'
+
+

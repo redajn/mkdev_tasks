@@ -2,7 +2,7 @@
   .row
     .col-1
     .col
-      h1= 'Events list'
+      h1= t('.header')
   .row
     .col-1
     .col-3
@@ -13,13 +13,13 @@
                 = link_to "#{event.title}", event_path(event), class: 'alert-link'
                 .row
                   .col-1
-                    = link_to 'Edit', edit_event_path(event)
+                    = link_to t('common.edit'), edit_event_path(event)
                   .col-1
-                    = link_to 'Delete', event_path(event), method: :delete, data: { confirm: 'Are you sure?' }
+                    = link_to t('common.destroy'), event_path(event), method: :delete, data: { confirm: t('common.confirm') }
 
     .col-3
       .alert.alert-dark
-        = link_to 'new', new_event_path, class: 'alert-link'
+        = link_to t('common.new'), new_event_path, class: 'alert-link'
   .row
     .col-1
     .col
