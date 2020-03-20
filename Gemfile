@@ -28,7 +28,7 @@ group :development, :test do
   gem "rspec-rails", "~> 4.0.0.beta"
   gem "rubocop", require: false
   gem "rubocop-performance", require: false
-  gem "rubocop-rails"
+  gem "rubocop-rails", require: false
 end
 
 group :development do
