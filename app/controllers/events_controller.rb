@@ -1,19 +1,19 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show update edit destroy]
 
   def index
-    @events = Event.order('updated_at DESC').page(params[:page])
+    @events = Event.order("updated_at DESC").page(params[:page])
   end
 
   def new
     @event = Event.new
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @event.update(event_params)

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Event < ApplicationRecord
-  PAGES_COUNT = 5.freeze
+  PAGES_COUNT = 5
 
   validates :title, presence: true
   validates :description, presence: true

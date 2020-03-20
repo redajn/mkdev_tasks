@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 describe EventsController do
   let(:event) { create(:event) }
@@ -38,13 +40,14 @@ describe EventsController do
     it "render new view" do
       expect(assigns(response)).to render_template :new
     end
-
   end
 
   describe "POST #create" do
     context "with valid attributes" do
       it "save new event" do
-        expect { post :create, params: { event: attributes_for(:event) } }.to change(Event, :count).by(1)
+        expect {
+          post :create, params: { event: attributes_for(:event) }
+        }.to change(Event, :count).by(1)
       end
 
       it "redirect to show" do
@@ -55,7 +58,9 @@ describe EventsController do
 
     context "with invalid attributes" do
       it "does not save the event" do
-        expect { post :create, params: { event: attributes_for(:invalid_event) } }.to_not change(Event, :count)
+        expect {
+          post :create, params: { event: attributes_for(:invalid_event) }
+        }.to_not change(Event, :count)
       end
 
       it "render template new" do
@@ -85,9 +90,9 @@ describe EventsController do
       end
 
       it "change event attributes" do
-        patch :update, params: { id: event, event: { title: 'New title' } }
+        patch :update, params: { id: event, event: { title: "New title" } }
         event.reload
-        expect(event.title).to eq 'New title'
+        expect(event.title).to eq "New title"
       end
 
       it "redirect to updated" do
@@ -97,10 +102,10 @@ describe EventsController do
     end
 
     context "invalid attributes" do
-      before {
+      before do
         patch :update,
-        params: { id: event, event: { title: nil } }
-      }
+              params: { id: event, event: { title: nil } }
+      end
       it "does not change event attributes" do
         event.reload
         expect(event.title).to eq "Anniversary event"
@@ -124,6 +129,4 @@ describe EventsController do
       expect(response).to redirect_to events_path
     end
   end
-
-
 end
