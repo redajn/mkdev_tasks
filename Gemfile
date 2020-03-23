@@ -29,6 +29,7 @@ group :development, :test do
   gem "rubocop", require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
+  gem "faker", git: "https://github.com/faker-ruby/faker.git", branch: "master"
 end
 
 group :development do

@@ -9,7 +9,7 @@ describe EventsController do
     let(:events) { create_list(:event, 2) }
     before { get :index }
 
-    it "Provides array of all events" do
+    it "provides array of all events" do
       expect(assigns(:events)).to match_array(events)
     end
 
@@ -83,7 +83,7 @@ describe EventsController do
   end
 
   describe "PATCH #update" do
-    context "valid attributes" do
+    context "with valid attributes" do
       it "assign to request event to @event" do
         patch :update, params: { id: event, event: attributes_for(:event) }
         expect(assigns(:event)).to eq event
@@ -101,14 +101,17 @@ describe EventsController do
       end
     end
 
-    context "invalid attributes" do
+    context "with invalid attributes" do
+      let(:title) { event.title }
+
       before do
         patch :update,
               params: { id: event, event: { title: nil } }
       end
+
       it "does not change event attributes" do
         event.reload
-        expect(event.title).to eq "Anniversary event"
+        expect(event.title).to eq title
       end
 
       it "re-render edit view" do

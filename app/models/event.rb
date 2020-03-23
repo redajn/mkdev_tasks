@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Model class for manages the data, logic and rules of events
 class Event < ApplicationRecord
   PAGES_COUNT = 5
 

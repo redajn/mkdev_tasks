@@ -61,5 +61,5 @@ event_list.each do |attributes|
   event.organizer_email = attributes[:organizer_email]
   event.organizer_telegram = attributes[:organizer_telegram]
   event.link = attributes[:link]
-  event.save
+  event.save!
 end
