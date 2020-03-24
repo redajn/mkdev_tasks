@@ -22,7 +22,7 @@ RSpec.describe Event, type: :model do
       subject.start_time = Time.current
       subject.end_time = Time.current - 1.day
       subject.valid?
-      expect(subject.errors[:end_time]).to include('must be after the start date')
+      expect(subject.errors[:end_time]).to include("must be after the start date")
     end
   end
 end

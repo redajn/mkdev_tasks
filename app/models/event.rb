@@ -4,8 +4,8 @@
 class Event < ApplicationRecord
   PAGES_COUNT = 5
   URL_FORMAT = \
-    /(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?/ix
-  MAIL_FORMAT = /([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})/ix
+    /(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?/ix.freeze
+  MAIL_FORMAT = /([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})/ix.freeze
   validates :title, presence: true, length: { in: 1..30 }
   validates :description, presence: true, length: { maximum: 255 }
   validates :location, presence: true
@@ -13,7 +13,7 @@ class Event < ApplicationRecord
   validates :end_time, presence: true
   validate  :end_time_after_start_time
   validates :organizer_email, presence: true
-  validates_format_of :organizer_email, with: MAIL_FORMAT
+  validates :organizer_email, format: { with: MAIL_FORMAT }
 
   scope :by_new, -> { order("updated_at DESC") }
 
@@ -24,9 +24,6 @@ class Event < ApplicationRecord
   def end_time_after_start_time
     return if end_time.blank? || start_time.blank?
 
-    if end_time < start_time
-      errors.add(:end_time, "must be after the start date")
-    end
+    errors.add(:end_time, "must be after the start date") if end_time < start_time
   end
 end
-
