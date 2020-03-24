@@ -30,7 +30,6 @@ group :development, :test do
   gem "rubocop"
   gem "rubocop-performance"
   gem "rubocop-rails"
-  gem "rubocop-require_tools"
   gem "faker", git: "https://github.com/faker-ruby/faker.git", branch: "master"
 end
 
