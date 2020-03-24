@@ -1,28 +1,16 @@
-.conteiner
+ .conteiner
   .row
     .col-1
     .col
-      h2= "#{@event.title}"
-  .row
-    .col-1
-    .col
-      p= "#{@event.description}"
-  .row
-    .col-1
-    .col
-      p= "Event time: #{@event.start_time} - #{@event.end_time}"
-  .row
-    .col-1
-    .col
-      p= "#{@event.location}"
-  .row
-    .col-1
-    .col
-      p= "Contact via #{@event.organizer_email} or #{@event.organizer_telegram}"
-  .row
-    .col-1
-    .col
-      p= "#{@event.link}"
+      = show_for @event do |e|
+        h2= e.attributes :title
+        p= e.attributes :description
+        p= e.attributes :start_time
+        p= e.attributes :end_time
+        p= e.attributes :location
+        p= e.attributes :organizer_email
+        p= e.attributes :organizer_telegram
+        p= e.attributes :link
   .row
     .col-1
     .col

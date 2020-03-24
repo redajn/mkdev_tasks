@@ -10,6 +10,8 @@ en:
   events:
     index:
       header: 'Events list'
+    edit:
+      header: 'Edit event'
     new:
       header: 'Create event'
     form:

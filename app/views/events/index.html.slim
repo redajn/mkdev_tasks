@@ -10,7 +10,7 @@
           .row
             .col
               .alert.alert-dark
-                = link_to "#{event.title}", event_path(event), class: 'alert-link'
+                = link_to event.title, event_path(event), class: 'alert-link'
                 .row
                   .col-1
                     = link_to t('common.edit'), edit_event_path(event)
