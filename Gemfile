@@ -27,9 +27,9 @@ group :development, :test do
   gem "pry-rails"
   gem "rails-controller-testing"
   gem "rspec-rails", "~> 4.0.0.beta"
-  gem "rubocop"
-  gem "rubocop-performance"
-  gem "rubocop-rails"
+  gem "rubocop", require: false
+  gem "rubocop-performance", require: false
+  gem "rubocop-rails", require: false
   gem "faker", git: "https://github.com/faker-ruby/faker.git", branch: "master"
 end
 
