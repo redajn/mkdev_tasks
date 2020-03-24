@@ -1,69 +1,59 @@
 = simple_form_for @event do |f|
-    .row
-      .col-1
-      .col
-        = f.label t('.title')
-    .row
-      .col-1
-      .col
-        = f.input_field :title
-    .row
-      .col-1
-      .col
-        = f.label t('.description')
-    .row
-      .col-1
-      .col
-        = f.input_field :description
-    .row
-      .col-1
-      .col
-        = f.label t('.location')
-    .row
-      .col-1
-      .col
-        = f.input_field :location
-    .row
-      .col-1
-      .col
-        = f.label t('.start_time')
-    .row
-      .col-1
-      .col
-        = f.input_field :start_time, value: @event.start_time&.strftime("%Y-%m-%dT%H:%M:%S")
-    .row
-      .col-1
-      .col
-        = f.label t('.end_time')
-    .row
-      .col-1
-      .col-2
-        = f.input_field :end_time, value: @event.end_time&.strftime("%Y-%m-%dT%H:%M:%S")
-    .row
-      .col-1
-      .col
-        = f.label t('.email')
-    .row
-      .col-1
-      .col-2
-        = f.input_field :organizer_email
-    .row
-      .col-1
-      .col
-        = f.label t('.telegram')
-    .row
-      .col-1
-      .col-2
-        = f.input_field :organizer_telegram
-    .row
-      .col-1
-      .col
-        = f.label t('.link')
-    .row
-      .col-1
-      .col-2
-        = f.input_field :link
-    .row
-      .col-1
-      .col
-        = f.submit t('common.submit')
+  .row
+    .col-1
+    .col
+      .row
+        .col
+          = f.label t('.title')
+      .row
+        .col
+          = f.input_field :title
+      .row
+        .col
+          = f.label t('.description')
+      .row
+        .col
+          = f.input_field :description
+      .row
+        .col
+          = f.label t('.location')
+      .row
+        .col
+          = f.input_field :location
+      .row
+        .col
+          = f.label t('.start_time')
+      .row
+        .col
+          = f.input_field :start_time, value: @event.start_time&.strftime("%Y-%m-%dT%H:%M:%S")
+      .row
+        .col
+          = f.label t('.end_time')
+      .row
+        .col
+          = f.input_field :end_time, value: @event.end_time&.strftime("%Y-%m-%dT%H:%M:%S")
+      .row
+        .col
+          = f.label t('.email')
+      .row
+        .col
+          = f.input_field :organizer_email
+      .row
+        .col
+          = f.label t('.telegram')
+      .row
+        .col
+          = f.input_field :organizer_telegram
+      .row
+        .col
+          = f.label t('.link')
+      .row
+        .col
+          = f.input_field :link
+      .row
+        .col
+          = f.submit t('common.submit')
+    .col-8
+      .row
+        .col
+          = render 'common/errors', model: @event
