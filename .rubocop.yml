@@ -23,7 +23,7 @@ Layout/LineLength:
   Max: 100
 
 Rails:
-  Enabled: true
+  Enabled: false
 
 Metrics/ClassLength:
   Max: 100
