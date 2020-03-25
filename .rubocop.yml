@@ -1,7 +1,3 @@
-require:
-  - rubocop-rails
-  - rubocop-performance
-
 AllCops:
   TargetRubyVersion: 2.6
   Exclude:
@@ -21,9 +17,6 @@ AllCops:
 
 Layout/LineLength:
   Max: 100
-
-Rails:
-  Enabled: false
 
 Metrics/ClassLength:
   Max: 100
@@ -86,21 +79,6 @@ Style/AndOr:
 Style/YodaCondition:
   Enabled: false
 
-Rails/OutputSafety:
-  Enabled: false
-
-Rails/Exit:
-  Enabled: false
-
-Rails/ApplicationRecord:
-  Enabled: true
-
-Rails/ApplicationJob:
-  Enabled: true
-
-Rails/SkipsModelValidations:
-  Enabled: false
-
 Style/HashEachMethods:
   Enabled: true
 
@@ -122,12 +100,6 @@ Style/GuardClause:
 Style/StringLiteralsInInterpolation:
   Enabled: false
 
-Performance/RedundantMerge:
-  MaxKeyValuePairs: 1
-
-Rails/HttpPositionalArguments:
-  Enabled: false
-
 Style/ModuleFunction:
   Enabled: false
 
@@ -142,12 +114,6 @@ Style/BlockDelimiters:
 
 Style/FormatStringToken:
   EnforcedStyle: template
-
-Rails/HasManyOrHasOneDependent:
-  Enabled: false
-
-Rails/InverseOf:
-  Enabled: false
 
 Bundler/OrderedGems:
   Exclude:
