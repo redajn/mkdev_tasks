@@ -1,0 +1,35 @@
+= simple_form_for @event do |f|
+  .row
+    .col-1
+    .col
+      .row
+        .col
+          = f.input :title
+      .row
+        .col
+          = f.input :description
+      .row
+        .col
+          = f.input :location
+      .row
+        .col
+          = f.input :start_time, value: @event.start_time&.strftime("%Y-%m-%dT%H:%M:%S")
+      .row
+        .col
+          = f.input :end_time, value: @event.end_time&.strftime("%Y-%m-%dT%H:%M:%S")
+      .row
+        .col
+          = f.input :organizer_email
+      .row
+        .col
+          = f.input :organizer_telegram
+      .row
+        .col
+          = f.input :link
+      .row
+        .col
+          = f.submit t('common.submit')
+    .col-8
+      .row
+        .col
+          = render 'common/errors', model: @event

@@ -1,0 +1,223 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 2.6
+  Exclude:
+    - bin/**
+    - config.ru
+    - Guardfile
+    - Rakefile
+    - node_modules/**/**
+    - config/**/**
+    - db/**/**
+    - config/application.rb
+    - config/environments/production.rb
+    - config/environments/development.rb
+    - config/environment.rb
+    - config/boot.rb
+    - config.ru
+
+Layout/LineLength:
+  Max: 100
+
+Rails:
+  Enabled: true
+
+Metrics/ClassLength:
+  Max: 100
+
+Metrics/AbcSize:
+  Max: 15
+
+Metrics/MethodLength:
+  Max: 20
+
+Lint/AmbiguousOperator:
+  Enabled: false
+
+Lint/SuppressedException:
+  Enabled: false
+
+Lint/AssignmentInCondition:
+  Enabled: false
+
+Lint/RedundantSplatExpansion:
+  Enabled: false
+
+Layout/ParameterAlignment:
+  Enabled: true
+
+Layout/MultilineOperationIndentation:
+  Enabled: true
+
+Layout/HashAlignment:
+  Enabled: true
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+Style/PercentLiteralDelimiters:
+  Enabled: true
+  PreferredDelimiters:
+    default: '[]'
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Naming/AccessorMethodName:
+  Enabled: true
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: true
+
+Style/RescueModifier:
+  Enabled: false
+
+Style/AndOr:
+  Enabled: true
+
+Style/YodaCondition:
+  Enabled: false
+
+Rails/OutputSafety:
+  Enabled: false
+
+Rails/Exit:
+  Enabled: false
+
+Rails/ApplicationRecord:
+  Enabled: true
+
+Rails/ApplicationJob:
+  Enabled: true
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/GuardClause:
+  Enabled: false
+
+Style/StringLiteralsInInterpolation:
+  Enabled: false
+
+Performance/RedundantMerge:
+  MaxKeyValuePairs: 1
+
+Rails/HttpPositionalArguments:
+  Enabled: false
+
+Style/ModuleFunction:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+    - db/schema.rb
+
+Style/BlockDelimiters:
+  Exclude:
+    - spec/**/*
+
+Style/FormatStringToken:
+  EnforcedStyle: template
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Rails/InverseOf:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Exclude:
+    - 'Gemfile'
+
+Layout/ArgumentAlignment:
+  Exclude:
+    - 'bin/webpack'
+    - 'bin/webpack-dev-server'
+
+Layout/EmptyLineAfterGuardClause:
+  Exclude:
+    - 'bin/bundle'
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Exclude:
+    - 'config/environments/production.rb'
+
+Layout/TrailingWhitespace:
+  Exclude:
+    - 'config/environments/test.rb'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'test/channels/application_cable/connection_test.rb'
+    - 'test/test_helper.rb'
+
+Style/Documentation:
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
+    - 'app/helpers/application_helper.rb'
+    - 'app/mailers/application_mailer.rb'
+    - 'app/models/application_record.rb'
+
+Style/ExpandPathArguments:
+  Exclude:
+    - 'bin/bundle'
+    - 'bin/rails'
+    - 'bin/rake'
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+Style/PerlBackrefs:
+  Exclude:
+    - 'bin/bundle'
+
+Style/RedundantBegin:
+  Exclude:
+    - 'bin/yarn'
+
+Style/SpecialGlobalVars:
+  EnforcedStyle: use_perl_names
+
+Style/StderrPuts:
+  Exclude:
+    - 'bin/yarn'
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  Exclude:
+    - 'bin/bundle'
+    - 'bin/webpack'
+    - 'bin/webpack-dev-server'
+    - 'bin/yarn'
+    - 'config/environments/production.rb'
+    - 'config/puma.rb'
+    - 'config/spring.rb'
+    - 'test/application_system_test_case.rb'
+    - 'test/channels/application_cable/connection_test.rb'
+
+
