@@ -22,8 +22,8 @@ RSpec.describe Event, type: :model do
     end
 
     context "with invalid attributes" do
-      it { is_expected.to_not allow_values('invalid_format').for(:organizer_email) }
-      it { is_expected.to_not allow_values('invalid_format').for(:link) }
+      it { is_expected.to_not allow_values("invalid_format").for(:organizer_email) }
+      it { is_expected.to_not allow_values("invalid_format").for(:link) }
     end
   end
 

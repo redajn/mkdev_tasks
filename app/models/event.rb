@@ -18,7 +18,6 @@ class Event < ApplicationRecord
   validates :link, presence: true
   validates :link, format: { with: URL_FORMAT }
 
-
   scope :by_new, -> { order("updated_at DESC") }
 
   paginates_per PAGES_COUNT
