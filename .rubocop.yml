@@ -18,7 +18,6 @@ AllCops:
     - config/environment.rb
     - config/boot.rb
     - config.ru
-    - .rubocop.yml
 
 Layout/LineLength:
   Max: 100
