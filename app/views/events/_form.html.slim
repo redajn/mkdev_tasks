@@ -4,52 +4,28 @@
     .col
       .row
         .col
-          = f.label t('.title')
+          = f.input :title
       .row
         .col
-          = f.input_field :title
+          = f.input :description
       .row
         .col
-          = f.label t('.description')
+          = f.input :location
       .row
         .col
-          = f.input_field :description
+          = f.input :start_time, value: @event.start_time&.strftime("%Y-%m-%dT%H:%M:%S")
       .row
         .col
-          = f.label t('.location')
+          = f.input :end_time, value: @event.end_time&.strftime("%Y-%m-%dT%H:%M:%S")
       .row
         .col
-          = f.input_field :location
+          = f.input :organizer_email
       .row
         .col
-          = f.label t('.start_time')
+          = f.input :organizer_telegram
       .row
         .col
-          = f.input_field :start_time, value: @event.start_time&.strftime("%Y-%m-%dT%H:%M:%S")
-      .row
-        .col
-          = f.label t('.end_time')
-      .row
-        .col
-          = f.input_field :end_time, value: @event.end_time&.strftime("%Y-%m-%dT%H:%M:%S")
-      .row
-        .col
-          = f.label t('.email')
-      .row
-        .col
-          = f.input_field :organizer_email
-      .row
-        .col
-          = f.label t('.telegram')
-      .row
-        .col
-          = f.input_field :organizer_telegram
-      .row
-        .col
-          = f.label t('.link')
-      .row
-        .col
-          = f.input_field :link
+          = f.input :link
       .row
         .col
           = f.submit t('common.submit')

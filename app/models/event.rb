@@ -12,8 +12,12 @@ class Event < ApplicationRecord
   validates :start_time, presence: true
   validates :end_time, presence: true
   validate  :end_time_after_start_time
+  validates :organizer_telegram, presence: true
   validates :organizer_email, presence: true
   validates :organizer_email, format: { with: MAIL_FORMAT }
+  validates :link, presence: true
+  validates :link, format: { with: URL_FORMAT }
+
 
   scope :by_new, -> { order("updated_at DESC") }
 

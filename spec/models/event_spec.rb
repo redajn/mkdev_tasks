@@ -15,6 +15,16 @@ RSpec.describe Event, type: :model do
     it { should validate_length_of :title }
     it { should validate_length_of :description }
     it { should validate_length_of :organizer_telegram }
+
+    context "with valid attributes" do
+      it { is_expected.to allow_values(Faker::Internet.email).for(:organizer_email) }
+      it { is_expected.to allow_values(Faker::Internet.url).for(:link) }
+    end
+
+    context "with invalid attributes" do
+      it { is_expected.to_not allow_values('invalid_format').for(:organizer_email) }
+      it { is_expected.to_not allow_values('invalid_format').for(:link) }
+    end
   end
 
   describe "get messege error" do
