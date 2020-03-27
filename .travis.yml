@@ -8,8 +8,8 @@ services:
 
 before_install:
   - bundle install --jobs=3
-  - bundle exec rake db:setup
   - cp config/database.yml.travis config/database.yml
+  - bundle exec rake db:setup
 
 cache: bundler
 
