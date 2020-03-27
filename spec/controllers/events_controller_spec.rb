@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require 'database_cleaner/active_record'
+
+DatabaseCleaner.strategy = :truncation
+DatabaseCleaner.clean
 
 describe EventsController do
   let(:event) { create(:event) }
