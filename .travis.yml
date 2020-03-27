@@ -6,10 +6,7 @@ services:
 before_install:
   - bundle install --jobs=3
   - bundle exec rake db:setup
-  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
 cache: bundler
 script:
   - bundle exec rspec
-test:
-  adapter: postgresql
-  database: travis_test
