@@ -1,3 +1,15 @@
 language: ruby
 rvm:
   - 2.6.4
+services:
+  - postgresql
+before_install:
+  - bundle install --jobs=3
+  - bundle exec rake db:setup
+  - cp config/database.yml.travis config/database.yml
+cache: bundler
+script:
+  - bundle exec rspec
+test:
+  adapter: postgresql
+  database: travis_test
