@@ -45,8 +45,6 @@ group :test do
   gem "selenium-webdriver"
   gem "shoulda-matchers"
   gem "webdrivers"
-  gem 'database_cleaner-active_record'
-  gem 'database_cleaner-sequel'
 end
 
 gem "tzinfo-data"
