@@ -1,3 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/c3b5824afc3ab87212c6/maintainability)](https://codeclimate.com/github/redajn/mkdev_tasks/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/c3b5824afc3ab87212c6/test_coverage)](https://codeclimate.com/github/redajn/mkdev_tasks/test_coverage)
 # README
 
 ## Installing
