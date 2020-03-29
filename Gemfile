@@ -45,7 +45,7 @@ group :test do
   gem "selenium-webdriver"
   gem "shoulda-matchers"
   gem "webdrivers"
-  gem "simplecov", require: false
+  gem "simplecov", "0.17.1", require: false
 end
 
 gem "tzinfo-data"
