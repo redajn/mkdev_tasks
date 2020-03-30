@@ -2,6 +2,8 @@
 
 # Controller class for events actions
 class EventsController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
+  before_action :require_permission, only: %i[ edit update destroy]
   before_action :set_event, only: %i[show update edit destroy]
 
   def index
@@ -25,7 +27,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = current_user.events.new(event_params)
     if @event.save
       redirect_to event_path(@event)
     else
@@ -35,13 +37,19 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to events_path
+    redirect_to root_path
   end
 
   private
 
+  def require_permission
+    if current_user != Event.find(params[:id]).user
+      redirect_to root_path, notice: "Permission denied"
+    end
+  end
+
   def set_event
-    @event = Event.find(params[:id])
+    @event = current_user.events.find(params[:id])
   end
 
   def event_params

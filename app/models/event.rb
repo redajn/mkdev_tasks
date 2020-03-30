@@ -2,6 +2,8 @@
 
 # Model class for manages the data, logic and rules of events
 class Event < ApplicationRecord
+  belongs_to :user
+
   PAGES_COUNT = 5
   URL_FORMAT = \
     /(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?/ix.freeze
