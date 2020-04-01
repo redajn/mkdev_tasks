@@ -12,7 +12,6 @@ describe EventsController do
 
   context "signed user" do
     describe "GET #index" do
-
       context "user with permission (creator)" do
         before { get :index, params: { user_id: user } }
         it "provides array of all events" do
@@ -85,7 +84,6 @@ describe EventsController do
     end
 
     describe "GET #edit" do
-
       context "user with permission (creator)" do
         before { get :edit, params: { id: event } }
         it "assign to request event to @event" do
