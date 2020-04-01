@@ -35,4 +35,6 @@ RSpec.describe Event, type: :model do
       expect(subject.errors[:end_time]).to include("must be after the start date")
     end
   end
+
+  it { should belong_to(:user) }
 end

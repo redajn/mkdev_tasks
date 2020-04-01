@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "factory_bot"
-require 'simplecov'
+require "simplecov"
 SimpleCov.start "rails"
 
 RSpec.configure do |config|
