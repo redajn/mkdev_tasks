@@ -3,11 +3,14 @@
 require "rails_helper"
 
 describe EventsController do
-  let(:event) { create(:event) }
+  login_user
+
+  let(:user) { subject.current_user }
+  let(:event) { create(:event, user: user) }
 
   describe "GET #index" do
-    let(:events) { create_list(:event, 2) }
-    before { get :index }
+    let(:events) { create_list(:event, 2, user: user) }
+    before { get :index, params: { user_id: user } }
 
     it "provides array of all events" do
       expect(assigns(:events)).to match_array(events)
@@ -129,7 +132,7 @@ describe EventsController do
 
     it "redirect index view" do
       delete :destroy, params: { id: event }
-      expect(response).to redirect_to events_path
+      expect(response).to redirect_to root_path
     end
   end
 end
