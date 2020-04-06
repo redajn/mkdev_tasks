@@ -94,20 +94,6 @@ describe EventsController do
           expect(response).to render_template :edit
         end
       end
-
-      context "user without permission" do
-        before { sign_out user }
-        before { sign_in another_user }
-        before { get :edit, params: { id: event } }
-
-        it "doesn't assign to request event to @event" do
-          expect(assigns(:event)).to_not eq event
-        end
-
-        it "doesn't render edit view" do
-          expect(response).to_not render_template :edit
-        end
-      end
     end
 
     describe "PATCH #update" do
@@ -127,26 +113,6 @@ describe EventsController do
           it "redirect to updated" do
             patch :update, params: { id: event, event: attributes_for(:event) }
             expect(response).to redirect_to event
-          end
-        end
-
-        context "user without permission" do
-          before { sign_in another_user }
-
-          it "doesn't assign to request event to @event" do
-            patch :update, params: { id: event, event: attributes_for(:event) }
-            expect(assigns(:event)).to_not eq event
-          end
-
-          it "doesn't change event attributes" do
-            expect {
-              patch :update, params: { id: event, event: { title: "New title" } }
-            }.to_not change(event, :reload)
-          end
-
-          it "doesn't redirect to updated" do
-            patch :update, params: { id: event, event: attributes_for(:event) }
-            expect(response).to_not redirect_to event
           end
         end
       end
