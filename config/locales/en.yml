@@ -7,6 +7,9 @@ en:
     destroy: 'Delete'
     submit: 'Save'
     confirm: 'Are you sure?'
+    sign_in: 'Sign_in'
+    sign_out: 'Sign out'
+    registratiom: 'Registration'
   events:
     index:
       header: 'Events list'

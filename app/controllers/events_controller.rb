@@ -44,8 +44,6 @@ class EventsController < ApplicationController
 
   def set_event
     @event = current_user.events.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, notice: "Permission denied"
   end
 
   def event_params
