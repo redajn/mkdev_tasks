@@ -10,6 +10,7 @@ FactoryBot.define do
     organizer_email { Faker::Internet.email }
     organizer_telegram { "@#{Faker::Internet.username}" }
     link { Faker::Internet.url }
+    user
 
     factory :invalid_event do
       title { nil }
@@ -20,6 +21,7 @@ FactoryBot.define do
       organizer_email { Faker::Internet.email }
       organizer_telegram { "@#{Faker::Internet.username}" }
       link { Faker::Internet.url }
+      user
     end
   end
 end

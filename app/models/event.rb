@@ -2,10 +2,11 @@
 
 # Model class for manages the data, logic and rules of events
 class Event < ApplicationRecord
+  belongs_to :user
+
   PAGES_COUNT = 5
   URL_FORMAT = \
     /(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?/ix.freeze
-  MAIL_FORMAT = /([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})/ix.freeze
   validates :title, presence: true, length: { in: 1..30 }
   validates :description, presence: true, length: { maximum: 255 }
   validates :location, presence: true
@@ -14,7 +15,7 @@ class Event < ApplicationRecord
   validate  :end_time_after_start_time
   validates :organizer_telegram, presence: true
   validates :organizer_email, presence: true
-  validates :organizer_email, format: { with: MAIL_FORMAT }
+  validates :organizer_email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :link, presence: true
   validates :link, format: { with: URL_FORMAT }
 

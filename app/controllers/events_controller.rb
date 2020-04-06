@@ -2,7 +2,7 @@
 
 # Controller class for events actions
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[show update edit destroy]
+  before_action :set_event, only: %i[update edit destroy]
 
   def index
     @events = Event.by_new.page(params[:page])
@@ -12,7 +12,9 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
-  def show; end
+  def show
+    @event = Event.find(params[:id])
+  end
 
   def edit; end
 
@@ -25,7 +27,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = current_user.events.new(event_params)
     if @event.save
       redirect_to event_path(@event)
     else
@@ -35,13 +37,13 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to events_path
+    redirect_to root_path
   end
 
   private
 
   def set_event
-    @event = Event.find(params[:id])
+    @event = current_user.events.find(params[:id])
   end
 
   def event_params
