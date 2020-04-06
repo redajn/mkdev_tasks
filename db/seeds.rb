@@ -1,5 +1,14 @@
 # frozen_string_literal: true
 
+user_list = [
+  { email: "mail1@mail.com",
+    password: "qwe123"},
+  { email: "mail2@mail.com",
+  password: "qwe123"},
+  { email: "mail3@mail.com",
+  password: "qwe123"},
+  ]
+
 event_list = [
   { title: 'Anniversary event',
     description: 'Jast some event like u see early',
@@ -51,8 +60,19 @@ event_list = [
     link: 'http://andanotheroneevent.com' }
 ]
 
+user_list.each do |attributes|
+  user = User.new
+  user.email = attributes[:email]
+  user.password = attributes[:password]
+  user.save!
+end
+
+
+
 event_list.each do |attributes|
+  offset = rand(User.count)
   event = Event.new
+  event.user = User.offset(offset).first
   event.title = attributes[:title]
   event.description = attributes[:description]
   event.location = attributes[:location]

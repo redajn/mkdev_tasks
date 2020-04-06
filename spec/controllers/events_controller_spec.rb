@@ -3,16 +3,16 @@
 require "rails_helper"
 
 describe EventsController do
-  login_user
-
-  let(:user) { subject.current_user }
-  let(:another_user) { create(:another_user) }
+  let(:user) { create(:user) }
+  let(:another_user) { create(:user) }
   let(:event) { create(:event, user: user) }
   let(:events) { create_list(:event, 2, user: user) }
 
   context "signed user" do
+    before { sign_in user }
+
     describe "GET #index" do
-      context "user with permission (creator)" do
+      context "when creator permission" do
         before { get :index, params: { user_id: user } }
         it "provides array of all events" do
           expect(assigns(:events)).to match_array(events)
@@ -23,7 +23,7 @@ describe EventsController do
         end
       end
 
-      context "user without permission" do
+      context "when user without permission" do
         before { get :index, params: { user_id: another_user } }
         it "provides array of all events" do
           expect(assigns(:events)).to match_array(events)
@@ -100,11 +100,11 @@ describe EventsController do
         before { sign_in another_user }
         before { get :edit, params: { id: event } }
 
-        it "dont assign to request event to @event" do
+        it "doesn't assign to request event to @event" do
           expect(assigns(:event)).to_not eq event
         end
 
-        it "dont render edit view" do
+        it "doesn't render edit view" do
           expect(response).to_not render_template :edit
         end
       end
@@ -131,21 +131,20 @@ describe EventsController do
         end
 
         context "user without permission" do
-          before { sign_out user }
           before { sign_in another_user }
 
-          it "dont assign to request event to @event" do
+          it "doesn't assign to request event to @event" do
             patch :update, params: { id: event, event: attributes_for(:event) }
             expect(assigns(:event)).to_not eq event
           end
 
-          it "dont change event attributes" do
-            patch :update, params: { id: event, event: { title: "New title" } }
-            event.reload
-            expect(event.title).to_not eq "New title"
+          it "doesn't change event attributes" do
+            expect {
+              patch :update, params: { id: event, event: { title: "New title" } }
+            }.to_not change(event, :reload)
           end
 
-          it "dont redirect to updated" do
+          it "doesn't redirect to updated" do
             patch :update, params: { id: event, event: attributes_for(:event) }
             expect(response).to_not redirect_to event
           end
@@ -185,9 +184,7 @@ describe EventsController do
     end
   end
 
-  context "dont signed user" do
-    before { sign_out user }
-
+  context "doesn't signed user" do
     describe "GET #index" do
       before { get :index }
 
@@ -199,17 +196,17 @@ describe EventsController do
     describe "GET #new" do
       before { get :new }
 
-      it "dont assign a new event to @event" do
+      it "doesn't assign a new event to @event" do
         expect(assigns(:event)).to_not be_a_new(Event)
       end
 
-      it "dont render new view" do
+      it "doesn't render new view" do
         expect(assigns(response)).to_not render_template :new
       end
     end
 
     describe "POST #create" do
-      it "dont save new event" do
+      it "doesn't save new event" do
         expect {
           post :create, params: { event: attributes_for(:event) }
         }.to_not change(Event, :count)
@@ -219,11 +216,11 @@ describe EventsController do
     describe "GET #edit" do
       before { get :edit, params: { id: event } }
 
-      it "dont assign to request event to @event" do
+      it "doesn't assign to request event to @event" do
         expect(assigns(:event)).to_not eq event
       end
 
-      it "dont render edit view" do
+      it "doesn't render edit view" do
         expect(response).to_not render_template :edit
       end
     end

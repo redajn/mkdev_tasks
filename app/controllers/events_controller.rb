@@ -2,9 +2,7 @@
 
 # Controller class for events actions
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create edit update destroy]
-  before_action :require_permission, only: %i[edit update destroy]
-  before_action :set_event, only: %i[show update edit destroy]
+  before_action :set_event, only: %i[update edit destroy]
 
   def index
     @events = Event.by_new.page(params[:page])
@@ -14,7 +12,9 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
-  def show; end
+  def show
+    @event = Event.find(params[:id])
+  end
 
   def edit; end
 
@@ -42,14 +42,10 @@ class EventsController < ApplicationController
 
   private
 
-  def require_permission
-    if current_user != Event.find(params[:id]).user
-      redirect_to root_path, notice: "Permission denied"
-    end
-  end
-
   def set_event
-    @event = Event.find(params[:id])
+    @event = current_user.events.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, notice: "Permission denied"
   end
 
   def event_params
