@@ -8,7 +8,7 @@ describe EventsController do
   let(:event) { create(:event, user: user) }
   let(:events) { create_list(:event, 2, user: user) }
 
-  context "signed user" do
+  context "when signed user" do
     before { sign_in user }
 
     describe "GET #index" do
@@ -98,7 +98,7 @@ describe EventsController do
 
     describe "PATCH #update" do
       context "with valid attributes" do
-        context "user with permission (creator)" do
+        context "with permission (creator)" do
           it "assign to request event to @event" do
             patch :update, params: { id: event, event: attributes_for(:event) }
             expect(assigns(:event)).to eq event

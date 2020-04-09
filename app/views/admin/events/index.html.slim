@@ -1,0 +1,26 @@
+.conteiner
+  .row
+    .col-1
+    .col
+      h1= t('.header')
+  .row
+    .col-1
+    .col-3
+      - @events.each do |event|
+          .row
+            .col
+              .alert.alert-dark
+                = link_to event.title, admin_event_path(event), class: 'alert-link'
+                .row
+                  .col-1
+                    = link_to t('common.edit'), edit_admin_event_path(event)
+                  .col-1
+                    = link_to t('common.destroy'), admin_event_path(event), method: :delete, data: { confirm: t('common.confirm') }
+
+    .col-3
+      .alert.alert-dark
+        = link_to t('common.new'), new_admin_event_path, class: 'alert-link'
+  .row
+    .col-1
+    .col
+      = paginate @events, theme: 'twitter-bootstrap-4'
