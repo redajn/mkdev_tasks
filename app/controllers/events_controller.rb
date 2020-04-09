@@ -2,6 +2,7 @@
 
 # Controller class for events actions
 class EventsController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :set_event, only: %i[update edit destroy]
 
   def index

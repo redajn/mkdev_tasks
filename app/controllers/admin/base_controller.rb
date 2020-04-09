@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
-class Admin::BaseController < ApplicationController
+module Admin
+  # Base controller for admin namespace
+  class BaseController < ApplicationController
+    before_action :authenticate_user!
+    before_action :check_admin
 
-  before_action :authenticate_user!
-  before_action :check_admin
+    private
 
-  private
-
-  def check_admin
-    redirect_to root_path, alert: "You have not permissions" unless current_user.admin?
+    def check_admin
+      redirect_to root_path, alert: "You have not permissions" unless current_user.admin?
+    end
   end
 end
