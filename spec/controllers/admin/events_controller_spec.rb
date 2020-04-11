@@ -36,31 +36,6 @@ describe Admin::EventsController do
       end
     end
 
-    describe "GET #new" do
-      before { get :new }
-
-      it "assign a new event to @event" do
-        expect(assigns(:event)).to be_a_new(Event)
-      end
-
-      it "render new view" do
-        expect(assigns(response)).to render_template :new
-      end
-    end
-
-    describe "POST #create" do
-      it "save new event" do
-        expect {
-          post :create, params: { event: attributes_for(:event) }
-        }.to change(Event, :count).by(1)
-      end
-
-      it "redirect to show" do
-        post :create, params: { event: attributes_for(:event) }
-        expect(response).to redirect_to admin_event_path(assigns(:event))
-      end
-    end
-
     describe "GET #edit" do
       before { get :edit, params: { id: event } }
 
@@ -100,7 +75,7 @@ describe Admin::EventsController do
 
       it "redirect index view" do
         delete :destroy, params: { id: event }
-        expect(response).to redirect_to admin_root_path
+        expect(response).to redirect_to admin_events_path
       end
     end
   end
@@ -112,7 +87,7 @@ describe Admin::EventsController do
       before { get :index, params: { user_id: user } }
 
       it "render index view" do
-        expect(response).to redirect_to root_path
+        expect(response).to redirect_to new_admin_session_path
       end
     end
   end

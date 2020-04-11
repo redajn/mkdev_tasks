@@ -16,10 +16,6 @@
                     = link_to t('common.edit'), edit_admin_event_path(event)
                   .col-1
                     = link_to t('common.destroy'), admin_event_path(event), method: :delete, data: { confirm: t('common.confirm') }
-
-    .col-3
-      .alert.alert-dark
-        = link_to t('common.new'), new_admin_event_path, class: 'alert-link'
   .row
     .col-1
     .col

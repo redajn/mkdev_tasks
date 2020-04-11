@@ -10,13 +10,20 @@ en:
     sign_in: 'Sign_in'
     sign_out: 'Sign out'
     registratiom: 'Registration'
+
   events:
     index:
       header: 'Events list'
     edit:
       header: 'Edit event'
+    update:
+      success: 'New event has been updated!'
+      fail: 'Not saved! Something went wrong'
     new:
       header: 'Create event'
+    create:
+      success: 'New event has been added!'
+      fail: 'Not created! Something went wrong'
     form:
       title: 'Title'
       description: 'Description'
@@ -26,5 +33,24 @@ en:
       email: 'Organizer email'
       telegram: 'Organizer telegram'
       link: 'Event link'
+
+  admin:
+    events:
+      index:
+        header: 'Events list'
+      edit:
+        header: 'Edit event'
+      update:
+        success: 'New event has been updated!'
+        fail: 'Not saved! Something went wrong'
+      form:
+        title: 'Title'
+        description: 'Description'
+        location: 'Location'
+        start_time: 'Start time'
+        end_time: 'End_time'
+        email: 'Organizer email'
+        telegram: 'Organizer telegram'
+        link: 'Event link'
 
 

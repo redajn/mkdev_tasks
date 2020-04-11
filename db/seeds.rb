@@ -83,3 +83,8 @@ event_list.each do |attributes|
   event.link = attributes[:link]
   event.save!
 end
+
+admin = Admin.new
+admin.email = "admin@mail.com"
+admin.password = "adminpassword"
+admin.save!

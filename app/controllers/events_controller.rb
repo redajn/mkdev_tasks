@@ -21,18 +21,18 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to event_path(@event)
+      redirect_to event_path(@event), notice: t(".success")
     else
-      render :edit
+      render :edit, notice: t(".fail")
     end
   end
 
   def create
     @event = current_user.events.new(event_params)
     if @event.save
-      redirect_to event_path(@event)
+      redirect_to event_path(@event), notice: t(".success")
     else
-      render :new
+      render :new, notice: t(".fail")
     end
   end
 
