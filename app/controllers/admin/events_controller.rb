@@ -19,13 +19,13 @@ class Admin
       if @event.update(event_params)
         redirect_to admin_event_path(@event), notice: t(".success")
       else
-        render :edit, notice: t(".edit")
+        render :edit, notice: t(".fail")
       end
     end
 
     def destroy
       @event.destroy
-      redirect_to admin_events_path
+      redirect_to admin_events_path, notice: t(".success")
     end
 
     private

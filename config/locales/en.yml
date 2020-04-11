@@ -33,6 +33,8 @@ en:
       email: 'Organizer email'
       telegram: 'Organizer telegram'
       link: 'Event link'
+    destroy:
+      success: 'Event has been removed!'
 
   admin:
     events:
@@ -52,5 +54,7 @@ en:
         email: 'Organizer email'
         telegram: 'Organizer telegram'
         link: 'Event link'
+      destroy:
+        success: 'Event has been removed!'
 
 
