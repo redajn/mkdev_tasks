@@ -42,11 +42,11 @@ group :development do
 end
 
 group :test do
-  gem "capybara", ">= 2.15"
   gem "selenium-webdriver"
   gem "shoulda-matchers"
   gem "webdrivers"
   gem "simplecov", "0.17.1", require: false
+  gem "capybara", ">= 2.15"
 end
 
 gem "tzinfo-data"
