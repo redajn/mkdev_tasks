@@ -10,9 +10,6 @@ services:
 
 addons:
   chrome: stable
-  apt:
-    packages:
-      - chromium-chromedriver
 
 before_install:
   - bundle install --jobs=3
