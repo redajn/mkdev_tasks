@@ -32,8 +32,8 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-Capybara.register_driver :selenium do |app|
+Capybara.register_driver :chrome do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
 
-Capybara.default_driver = :selenium
+Capybara.default_driver = :chrome
