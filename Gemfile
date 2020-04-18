@@ -32,6 +32,8 @@ group :development, :test do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
+  gem 'selenium-webdriver'
+  gem 'capybara', '>= 2.15'
 end
 
 group :development do
@@ -42,11 +44,9 @@ group :development do
 end
 
 group :test do
-  gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'webdrivers'
   gem 'simplecov', '0.17.1', require: false
-  gem 'capybara', '>= 2.15'
 end
 
 gem 'tzinfo-data'
