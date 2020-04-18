@@ -5,8 +5,8 @@
       = f.input :title
       = f.input :description
       = f.input :location
-      = f.input :start_time, value: @event.start_time&.strftime("%Y-%m-%dT%H:%M:%S")
-      = f.input :end_time, value: @event.end_time&.strftime("%Y-%m-%dT%H:%M:%S")
+      = f.input :start_time, value: @event.start_time&.to_formatted_s(:event_date_format)
+      = f.input :end_time, value: @event.end_time&.to_formatted_s(:event_date_format)
       = f.input :organizer_email
       = f.input :organizer_telegram
       = f.input :link

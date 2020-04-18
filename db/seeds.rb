@@ -84,7 +84,4 @@ event_list.each do |attributes|
   event.save!
 end
 
-admin = Admin.new
-admin.email = "admin@mail.com"
-admin.password = "adminpassword"
-admin.save!
+admin = Admin.create!(email: "admin@mail.com", password: "adminpassword")

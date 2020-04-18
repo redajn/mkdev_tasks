@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[update edit destroy]
 
   def index
-    @events = Event.by_new.page(params[:page])
+    @events = Event.order_by_pub_date.page(params[:page])
   end
 
   def new
@@ -21,24 +21,24 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to event_path(@event), notice: t(".success")
+      redirect_to event_path(@event), notice: t('.success')
     else
-      render :edit, notice: t(".fail")
+      render :edit, notice: t('.fail')
     end
   end
 
   def create
     @event = current_user.events.new(event_params)
     if @event.save
-      redirect_to event_path(@event), notice: t(".success")
+      redirect_to event_path(@event), notice: t('.success')
     else
-      render :new, notice: t(".fail")
+      render :new, notice: t('.fail')
     end
   end
 
   def destroy
     @event.destroy
-    redirect_to root_path, notice: t(".success")
+    redirect_to root_path, notice: t('.success')
   end
 
   private

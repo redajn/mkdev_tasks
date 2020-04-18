@@ -3,29 +3,27 @@
 class Admin
   # Controller class for events actions
   class EventsController < Admin::BaseController
-    before_action :set_event, only: %i[update edit destroy]
+    before_action :set_event, only: %i[show update edit destroy]
 
     def index
-      @events = Event.by_new.page(params[:page])
+      @events = Event.order_by_pub_date.page(params[:page])
     end
 
-    def show
-      @event = Event.find(params[:id])
-    end
+    def show; end
 
     def edit; end
 
     def update
       if @event.update(event_params)
-        redirect_to admin_event_path(@event), notice: t(".success")
+        redirect_to admin_event_path(@event), notice: t('.success')
       else
-        render :edit, notice: t(".fail")
+        render :edit, notice: t('.fail')
       end
     end
 
     def destroy
       @event.destroy
-      redirect_to admin_events_path, notice: t(".success")
+      redirect_to admin_events_path, notice: t('.success')
     end
 
     private
