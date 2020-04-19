@@ -5,19 +5,18 @@ html
     title LocalEvents
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', media: 'all','data-turbolinks-track': 'reload'
-    = stylesheet_pack_tag 'application', media: 'all','data-turbolinks-track': 'reload'
+    = stylesheet_link_tag
+    = javascript_pack_tag
   body
     .conteiner
       .row
         .col-1
         .col
           - if user_signed_in?
-              a href=destroy_user_session_path data-method="delete" #{t('common.sign_out')}
+              a.nav-link href=destroy_user_session_path data-method="delete" #{t('common.sign_out')}
           - else
-              a href=new_user_session_path #{t('common.sign_in')}
-              a href=new_user_registration_path #{t('common.registration')}
+              a.nav-link href=new_user_session_path #{t('common.sign_in')}
+              a.nav-link href=new_user_registration_path #{t('common.registration')}
       .row
         .col-1
         .col
