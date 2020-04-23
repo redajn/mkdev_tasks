@@ -28,6 +28,6 @@ class Event < ApplicationRecord
   def end_time_after_start_time
     return if end_time.blank? || start_time.blank?
 
-    errors.add(:end_time, 'must be after the start date') if end_time < start_time
+    errors.add(:end_time, I18n.t('common.date_notice')) if end_time < start_time
   end
 end

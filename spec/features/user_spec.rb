@@ -49,20 +49,30 @@ feature 'user action' do
       fill_in 'Organizer telegram', with: "@#{Faker::Internet.username}"
       fill_in 'Link', with: Faker::Internet.url
       click_button('Save')
+      expect(page).to have_content('New event has been added!')
     end
 
-    scenario 'change edit form data and save' do
+    scenario 'change data in the edit form, save and get success' do
       click_link('Edit')
       fill_in 'Title', with: 'New event title'
       click_button 'Save'
+      expect(page).to have_content('Event has been updated!')
     end
 
-    scenario 'delete event' do
+    scenario 'removal event and get success' do
       click_link('Delete')
+      page.driver.browser.switch_to.alert.accept
+      expect(page).to have_content('Event has been removed!')
     end
 
-    scenario 'logout account' do
+    scenario 'logout account, get login link' do
       click_link 'Sign out'
+      expect(page).to have_link('Sign_in')
+    end
+
+    scenario 'logout account, get registration link' do
+      click_link 'Sign out'
+      expect(page).to have_link('Registration')
     end
   end
 end

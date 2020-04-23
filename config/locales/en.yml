@@ -10,14 +10,14 @@ en:
     sign_in: 'Sign_in'
     sign_out: 'Sign out'
     registratiom: 'Registration'
-
+    date_notice: 'must be after the start date'
   events:
     index:
       header: 'Events list'
     edit:
       header: 'Edit event'
     update:
-      success: 'New event has been updated!'
+      success: 'Event has been updated!'
       fail: 'Not saved! Something went wrong'
     new:
       header: 'Create event'
@@ -43,7 +43,7 @@ en:
       edit:
         header: 'Edit event'
       update:
-        success: 'New event has been updated!'
+        success: 'Event has been updated!'
         fail: 'Not saved! Something went wrong'
       form:
         title: 'Title'
