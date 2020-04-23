@@ -64,9 +64,6 @@ config/master.key
 
 node_modules/
 
-/public/packs
-/public/packs-test
-/public/assets
 
 /yarn-error.log
 yarn-debug.log*
