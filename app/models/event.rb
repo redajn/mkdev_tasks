@@ -19,7 +19,7 @@ class Event < ApplicationRecord
   validates :link, presence: true
   validates :link, format: { with: URL_FORMAT }
 
-  scope :by_new, -> { order("updated_at DESC") }
+  scope :order_by_pub_date, -> { order('updated_at DESC') }
 
   paginates_per PAGES_COUNT
 
@@ -28,6 +28,6 @@ class Event < ApplicationRecord
   def end_time_after_start_time
     return if end_time.blank? || start_time.blank?
 
-    errors.add(:end_time, "must be after the start date") if end_time < start_time
+    errors.add(:end_time, I18n.t('common.date_notice')) if end_time < start_time
   end
 end

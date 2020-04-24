@@ -1,0 +1,18 @@
+ .conteiner
+  .row
+    .col-1
+    .col
+      = show_for @event do |e|
+        h2= e.attributes :title
+        p= e.attributes :description
+        p= e.attributes :start_time
+        p= e.attributes :end_time
+        p= e.attributes :location
+        p= e.attributes :organizer_email
+        p= e.attributes :organizer_telegram
+        p= e.attributes :link
+  .row
+    .col-1
+    .col
+      = link_to t('common.home'), admin_events_path
+

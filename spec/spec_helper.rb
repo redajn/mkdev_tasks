@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "factory_bot"
-require "simplecov"
-SimpleCov.start "rails"
+require 'factory_bot'
+require 'simplecov'
+SimpleCov.start 'rails'
 
 RSpec.configure do |config|
   config.formatter = :documentation

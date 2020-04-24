@@ -208,7 +208,7 @@ Style/StderrPuts:
     - 'bin/yarn'
 
 Style/StringLiterals:
-  EnforcedStyle: double_quotes
+  EnforcedStyle: single_quotes
   Exclude:
     - 'bin/bundle'
     - 'bin/webpack'
