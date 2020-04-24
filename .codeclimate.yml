@@ -3,6 +3,6 @@ plugins:
   rubocop:
     enabled: true
     channel: rubocop-0-81
-    exclude_patterns:
-    - "public/packs/"
-    - "public/packs-test/"
+exclude_patterns:
+- "public/packs/"
+- "public/packs-test/"
