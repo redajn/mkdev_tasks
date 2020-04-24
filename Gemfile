@@ -18,7 +18,7 @@ gem 'sass-rails', '>= 6'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
-gem 'webpacker', '4.0.7'
+gem 'webpacker', '~> 4.0'
 gem 'show_for'
 gem 'devise'
 
