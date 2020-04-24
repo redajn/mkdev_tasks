@@ -6,3 +6,4 @@ plugins:
 exclude_patterns:
 - "public/packs/"
 - "public/packs-test/"
+- "spec/"
