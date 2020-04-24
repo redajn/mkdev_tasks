@@ -7,3 +7,16 @@ exclude_patterns:
 - "public/packs/"
 - "public/packs-test/"
 - "spec/"
+- "config/"
+- db/
+- dist/
+- features/
+- "**/node_modules/"
+- "script/"
+- "**/spec/"
+- "**/test/"
+- "**/tests/"
+- "Tests/"
+- "**/vendor/"
+- "**/*_test.go"
+- "**/*.d.ts"
