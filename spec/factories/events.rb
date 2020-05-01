@@ -15,6 +15,10 @@ FactoryBot.define do
       state { 'approved' }
     end
 
+    trait :rejected do
+      state { 'rejected' }
+    end
+
     trait :pending do
       state { 'pending' }
     end

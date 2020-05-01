@@ -3,7 +3,8 @@
 require 'rails_helper'
 
 feature 'admin actions' do
-  given(:admin) { create(:admin) }
+  given!(:admin) { create(:admin) }
+  given!(:user) { create(:user) }
 
   scenario 'admin fill login form and get success' do
     visit 'admins/sign_in'
@@ -16,7 +17,6 @@ feature 'admin actions' do
   end
 
   context 'when admin logged in' do
-    given(:user) { create(:user) }
     given!(:event) { create(:event, :pending, user: user) }
 
     background do
@@ -47,18 +47,50 @@ feature 'admin actions' do
       expect(page).to have_link('Registration')
     end
 
-    scenario 'approve event, get sucsess' do
-      visit admin_event_path(event)
+    context 'when event is pending' do
+      given!(:pending_event) { create(:event, :pending, user: user) }
+      background { visit admin_event_path(pending_event) }
 
-      click_link 'approve'
-      expect(page).to have_content('Event state set to: approved')
+      scenario 'approve event, get sucsess' do
+        visit admin_event_path(pending_event)
+        click_link 'approve'
+        expect(page).to have_content('Event state set to: approved')
+      end
+
+      scenario 'reject event, get sucsess' do
+        click_link 'reject'
+        expect(page).to have_content('Event state set to: rejected')
+      end
     end
 
-    scenario 'reject event, get sucsess' do
-      visit admin_event_path(event)
+    context 'when event is approved' do
+      given!(:approved_event) { create(:event, :approved, user: user) }
+      background { visit admin_event_path(approved_event) }
 
-      click_link 'reject'
-      expect(page).to have_content('Event state set to: rejected')
+      scenario 'to pending event, get sucsess' do
+        click_link 'pending'
+        expect(page).to have_content('Event state set to: pending')
+      end
+
+      scenario 'reject event, get sucsess' do
+        click_link 'reject'
+        expect(page).to have_content('Event state set to: rejected')
+      end
+    end
+
+    context 'when event is rejected' do
+      given!(:rejected_event) { create(:event, :rejected, user: user) }
+      background { visit admin_event_path(rejected_event) }
+
+      scenario 'to pending event, get sucsess' do
+        click_link 'pending'
+        expect(page).to have_content('Event state set to: pending')
+      end
+
+      scenario 'approve event, get sucsess' do
+        click_link 'approve'
+        expect(page).to have_content('Event state set to: approved')
+      end
     end
   end
 end
