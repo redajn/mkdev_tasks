@@ -20,3 +20,4 @@ exclude_patterns:
 - "**/vendor/"
 - "**/*_test.go"
 - "**/*.d.ts"
+- "**.js"

@@ -6,7 +6,7 @@ describe EventsController do
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
   let(:event) { create(:event, user: user) }
-  let(:events) { create_list(:event, 2, user: user) }
+  let(:approved_events) { create_list(:event, 2, :approved, user: user) }
 
   context 'when signed user' do
     before { sign_in user }
@@ -15,7 +15,7 @@ describe EventsController do
       context 'when creator permission' do
         before { get :index, params: { user_id: user } }
         it 'provides array of all events' do
-          expect(assigns(:events)).to match_array(events)
+          expect(assigns(:events)).to match_array(approved_events)
         end
 
         it 'render index view' do
@@ -26,7 +26,7 @@ describe EventsController do
       context 'when user without permission' do
         before { get :index, params: { user_id: another_user } }
         it 'provides array of all events' do
-          expect(assigns(:events)).to match_array(events)
+          expect(assigns(:events)).to match_array(approved_events)
         end
       end
     end
@@ -155,7 +155,7 @@ describe EventsController do
       before { get :index }
 
       it 'provides array of all events' do
-        expect(assigns(:events)).to match_array(events)
+        expect(assigns(:events)).to match_array(approved_events)
       end
     end
 

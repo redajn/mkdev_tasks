@@ -4,6 +4,16 @@
     .col
       h1= t('.header')
   .row
+        .col-1
+        .col-1
+          a.nav-link href=admin_events_path(state: 'pending') pending
+        .col-1
+          a.nav-link href=admin_events_path(state: 'approved') approved
+        .col-1
+          a.nav-link href=admin_events_path(state: 'rejected') rejected
+        .col-1
+          a.nav-link href=admin_events_path all
+  .row
     .col-1
     .col-3
       - @events.each do |event|

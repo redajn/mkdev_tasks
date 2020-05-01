@@ -56,5 +56,7 @@ en:
         link: 'Event link'
       destroy:
         success: 'Event has been removed!'
+      change_state:
+        success: 'Event state set to: '
 
 

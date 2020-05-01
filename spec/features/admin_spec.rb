@@ -17,7 +17,7 @@ feature 'admin actions' do
 
   context 'when admin logged in' do
     given(:user) { create(:user) }
-    given!(:event) { create(:event, user: user) }
+    given!(:event) { create(:event, :pending, user: user) }
 
     background do
       login_as(admin, scope: :admin)
@@ -45,6 +45,20 @@ feature 'admin actions' do
     scenario 'logout account, get registration link' do
       click_link 'Sign out'
       expect(page).to have_link('Registration')
+    end
+
+    scenario 'approve event, get sucsess' do
+      visit admin_event_path(event)
+
+      click_link 'approve'
+      expect(page).to have_content('Event state set to: approved')
+    end
+
+    scenario 'reject event, get sucsess' do
+      visit admin_event_path(event)
+
+      click_link 'reject'
+      expect(page).to have_content('Event state set to: rejected')
     end
   end
 end

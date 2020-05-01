@@ -16,7 +16,7 @@ feature 'user action' do
   end
 
   context 'when user logged in' do
-    given!(:event) { create(:event, user: user) }
+    given!(:event) { create(:event, :approved, user: user) }
 
     background do
       login_as(user, scope: :user)

@@ -10,6 +10,15 @@ FactoryBot.define do
     organizer_email { Faker::Internet.email }
     organizer_telegram { "@#{Faker::Internet.username}" }
     link { Faker::Internet.url }
+
+    trait :approved do
+      state { 'approved' }
+    end
+
+    trait :pending do
+      state { 'pending' }
+    end
+
     user
 
     factory :invalid_event do
