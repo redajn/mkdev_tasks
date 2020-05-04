@@ -53,13 +53,13 @@ feature 'admin actions' do
 
       scenario 'approve event, get sucsess' do
         visit admin_event_path(pending_event)
-        click_link 'approve'
-        expect(page).to have_content('Event state set to: approved')
+        click_button 'approve'
+        expect(page).to have_content('Event state set to approved')
       end
 
       scenario 'reject event, get sucsess' do
-        click_link 'reject'
-        expect(page).to have_content('Event state set to: rejected')
+        click_button 'reject'
+        expect(page).to have_content('Event state set to rejected')
       end
     end
 
@@ -68,13 +68,13 @@ feature 'admin actions' do
       background { visit admin_event_path(approved_event) }
 
       scenario 'to pending event, get sucsess' do
-        click_link 'pending'
-        expect(page).to have_content('Event state set to: pending')
+        click_button 'pending'
+        expect(page).to have_content('Event state set to pending')
       end
 
       scenario 'reject event, get sucsess' do
-        click_link 'reject'
-        expect(page).to have_content('Event state set to: rejected')
+        click_button 'reject'
+        expect(page).to have_content('Event state set to rejected')
       end
     end
 
@@ -83,13 +83,13 @@ feature 'admin actions' do
       background { visit admin_event_path(rejected_event) }
 
       scenario 'to pending event, get sucsess' do
-        click_link 'pending'
-        expect(page).to have_content('Event state set to: pending')
+        click_button 'pending'
+        expect(page).to have_content('Event state set to pending')
       end
 
       scenario 'approve event, get sucsess' do
-        click_link 'approve'
-        expect(page).to have_content('Event state set to: approved')
+        click_button 'approve'
+        expect(page).to have_content('Event state set to approved')
       end
     end
   end

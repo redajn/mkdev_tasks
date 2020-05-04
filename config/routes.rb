@@ -6,9 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'admin/events#index'
     resources :events do
-      member do
-        get 'change_state'
-      end
+      resources :state, only: [:create]
     end
   end
 

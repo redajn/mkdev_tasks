@@ -56,11 +56,11 @@ en:
         link: 'Event link'
       destroy:
         success: 'Event has been removed!'
-      change_state:
-        success: 'Event state set to: '
       show:
         approve: 'approve'
         reject: 'reject'
         pending: 'pending'
-
+    state:
+      create:
+        success: 'Event state set to %{state}'
 

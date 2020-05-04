@@ -12,16 +12,9 @@
         p= e.attributes :organizer_telegram
         p= e.attributes :link
         .row
-          - unless @event.approved?
-            .col-1
-              = link_to t('.approve'), change_state_admin_event_path(@event, state: 'approve')
-          -unless @event.rejected?
-            .col-1
-              = link_to t('.reject'), change_state_admin_event_path(@event, state: 'reject')
-          - unless @event.pending?
-            .col-1
-              = link_to t('.pending'), change_state_admin_event_path(@event, state: 'to_pending')
-
+          = @event.approve_button
+          = @event.reject_button
+          = @event.to_pending_button
   .row
     .col-1
     .col

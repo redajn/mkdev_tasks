@@ -6,13 +6,13 @@
   .row
         .col-1
         .col-1
-          a.nav-link href=admin_events_path(state: 'pending') pending
+          = filter_state('pending')
         .col-1
-          a.nav-link href=admin_events_path(state: 'approved') approved
+          = filter_state('approved')
         .col-1
-          a.nav-link href=admin_events_path(state: 'rejected') rejected
+          = filter_state('rejected')
         .col-1
-          a.nav-link href=admin_events_path all
+          = filter_state
   .row
     .col-1
     .col-3

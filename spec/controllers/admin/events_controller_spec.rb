@@ -7,7 +7,6 @@ describe Admin::EventsController do
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
   let(:event) { create(:event, user: user) }
-  # let(:events) { create_list(:event, 2, user: user) }
   let(:approved_events) { create_list(:event, 2, :approved, user: user) }
   let(:rejected_events) { create_list(:event, 2, :rejected, user: user) }
   let(:pending_events) { create_list(:event, 2, :pending, user: user) }
