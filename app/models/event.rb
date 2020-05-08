@@ -39,8 +39,7 @@ class Event < ApplicationRecord
   validates :link, presence: true
   validates :link, format: { with: URL_FORMAT }
 
-  scope :order_by_pub_date, -> { where(state: 'approved').order('updated_at DESC') }
-  scope :pending, -> { where(state: 'pending').order('created_at ASC') }
+  scope :order_by_pub_date, -> { approved.order('updated_at DESC') }
 
   paginates_per PAGES_COUNT
 

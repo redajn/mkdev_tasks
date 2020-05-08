@@ -6,7 +6,7 @@ class Admin
     before_action :set_event, only: %i[show update edit destroy]
 
     def index
-      @events = EventsQuery.new(Event.all, params).call
+      @events = EventsQuery.new(Event.all, params).call.page(params[:page])
     end
 
     def show; end

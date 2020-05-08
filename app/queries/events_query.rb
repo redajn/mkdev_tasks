@@ -8,31 +8,12 @@ class EventsQuery
   end
 
   def call
-    case state
-    when 'pending'
-      pending_events
-    when 'approved'
-      approved_events
-    when 'rejected'
-      rejected_events
-    else
-      @initial_scope.page(@params[:page])
-    end
+    return @initial_scope if state.nil?
+
+    @initial_scope.send(state)
   end
 
   private
-
-  def pending_events
-    @initial_scope.pending.page(@params[:page])
-  end
-
-  def rejected_events
-    @initial_scope.rejected.page(@params[:page])
-  end
-
-  def approved_events
-    @initial_scope.approved.page(@params[:page])
-  end
 
   def state
     @params[:state]

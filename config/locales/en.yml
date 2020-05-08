@@ -63,4 +63,5 @@ en:
     state:
       create:
         success: 'Event state set to %{state}'
+        fail: 'Not saved! Something went wrong'
 

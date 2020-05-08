@@ -12,9 +12,9 @@
         p= e.attributes :organizer_telegram
         p= e.attributes :link
         .row
-          = @event.approve_button
-          = @event.reject_button
-          = @event.to_pending_button
+          - @event.aasm(:state).permitted_transitions.each do |transition|
+            = @event.switch_status_bar(transition)
+
   .row
     .col-1
     .col

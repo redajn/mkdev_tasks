@@ -5,7 +5,7 @@ module ApplicationHelper
     date&.to_formatted_s(:event_date_format)
   end
 
-  def filter_state(state = nil)
-    link_to state || 'all', admin_events_path(state: state)
+  def filter_state(state)
+    link_to(state, admin_events_path(state: state))
   end
 end

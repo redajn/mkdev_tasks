@@ -5,18 +5,13 @@ class Admin
   class StateController < Admin::BaseController
     def create
       event = Event.find(params[:event_id])
+      event.send params[:state]
 
-      case params[:state]
-      when 'approve'
-        event.approve
-      when 'reject'
-        event.reject
-      when 'to_pending'
-        event.to_pending
+      if event.save
+        redirect_to admin_events_path, notice: t('.success', { state: event.state })
+      else
+        redirect_to admin_event_path(event), notice: t('.fail')
       end
-
-      event.save
-      redirect_to admin_events_path, notice: t('.success', { state: event.state })
     end
   end
 end
