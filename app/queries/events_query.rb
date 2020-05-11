@@ -8,8 +8,6 @@ class EventsQuery
   end
 
   def call
-    return @initial_scope if event_state.nil?
-
     @initial_scope.send(event_state)
   end
 
