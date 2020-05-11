@@ -11,6 +11,9 @@
         p= e.attributes :organizer_email
         p= e.attributes :organizer_telegram
         p= e.attributes :link
+        .row
+          - @event.switch_status_bar.each do |button|
+            = button
   .row
     .col-1
     .col

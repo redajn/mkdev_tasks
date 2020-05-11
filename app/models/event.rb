@@ -2,6 +2,26 @@
 
 # Model class for manages the data, logic and rules of events
 class Event < ApplicationRecord
+  include AASM
+
+  aasm(:state) do
+    state :pending, initial: true
+    state :approved
+    state :rejected
+
+    event :approve do
+      transitions from: %i[pending rejected], to: :approved
+    end
+
+    event :reject do
+      transitions from: %i[pending approved], to: :rejected
+    end
+
+    event :to_pending do
+      transitions from: %i[rejected approved], to: :pending
+    end
+  end
+
   belongs_to :user
 
   PAGES_COUNT = 5
@@ -19,7 +39,7 @@ class Event < ApplicationRecord
   validates :link, presence: true
   validates :link, format: { with: URL_FORMAT }
 
-  scope :order_by_pub_date, -> { order('updated_at DESC') }
+  scope :order_by_pub_date, -> { approved.order('updated_at DESC') }
 
   paginates_per PAGES_COUNT
 

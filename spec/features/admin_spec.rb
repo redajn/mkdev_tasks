@@ -3,7 +3,8 @@
 require 'rails_helper'
 
 feature 'admin actions' do
-  given(:admin) { create(:admin) }
+  given!(:admin) { create(:admin) }
+  given!(:user) { create(:user) }
 
   scenario 'admin fill login form and get success' do
     visit 'admins/sign_in'
@@ -16,8 +17,7 @@ feature 'admin actions' do
   end
 
   context 'when admin logged in' do
-    given(:user) { create(:user) }
-    given!(:event) { create(:event, user: user) }
+    given!(:event) { create(:event, :pending, user: user) }
 
     background do
       login_as(admin, scope: :admin)
@@ -45,6 +45,52 @@ feature 'admin actions' do
     scenario 'logout account, get registration link' do
       click_link 'Sign out'
       expect(page).to have_link('Registration')
+    end
+
+    context 'when event is pending' do
+      given!(:pending_event) { create(:event, :pending, user: user) }
+      background { visit admin_event_path(pending_event) }
+
+      scenario 'approve event, get sucsess' do
+        visit admin_event_path(pending_event)
+        click_button 'approve'
+        expect(page).to have_content('Event state set to approved')
+      end
+
+      scenario 'reject event, get sucsess' do
+        click_button 'reject'
+        expect(page).to have_content('Event state set to rejected')
+      end
+    end
+
+    context 'when event is approved' do
+      given!(:approved_event) { create(:event, :approved, user: user) }
+      background { visit admin_event_path(approved_event) }
+
+      scenario 'to pending event, get sucsess' do
+        click_button 'pending'
+        expect(page).to have_content('Event state set to pending')
+      end
+
+      scenario 'reject event, get sucsess' do
+        click_button 'reject'
+        expect(page).to have_content('Event state set to rejected')
+      end
+    end
+
+    context 'when event is rejected' do
+      given!(:rejected_event) { create(:event, :rejected, user: user) }
+      background { visit admin_event_path(rejected_event) }
+
+      scenario 'to pending event, get sucsess' do
+        click_button 'pending'
+        expect(page).to have_content('Event state set to pending')
+      end
+
+      scenario 'approve event, get sucsess' do
+        click_button 'approve'
+        expect(page).to have_content('Event state set to approved')
+      end
     end
   end
 end

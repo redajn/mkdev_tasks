@@ -37,4 +37,36 @@ RSpec.describe Event, type: :model do
   end
 
   it { should belong_to(:user) }
+
+  describe 'states switchers' do
+    let(:event) { create(:event) }
+
+    it 'new event state is pendind' do
+      expect(event).to have_state(:pending).on(:state)
+    end
+
+    it 'approve switch pending to approved' do
+      expect(event).to transition_from(:pending).to(:approved).on_event(:approve).on(:state)
+    end
+
+    it 'approve switch rejected to approved' do
+      expect(event).to transition_from(:rejected).to(:approved).on_event(:approve).on(:state)
+    end
+
+    it 'reject switch pending to rejected' do
+      expect(event).to transition_from(:pending).to(:rejected).on_event(:reject).on(:state)
+    end
+
+    it 'reject switch approve to rejected' do
+      expect(event).to transition_from(:approved).to(:rejected).on_event(:reject).on(:state)
+    end
+
+    it 'to_pending switch rejected to pending' do
+      expect(event).to transition_from(:rejected).to(:pending).on_event(:to_pending).on(:state)
+    end
+
+    it 'to_pending switch approved to pending' do
+      expect(event).to transition_from(:approved).to(:pending).on_event(:to_pending).on(:state)
+    end
+  end
 end

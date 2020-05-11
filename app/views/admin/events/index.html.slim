@@ -4,6 +4,16 @@
     .col
       h1= t('.header')
   .row
+        .col-1
+        .col-1
+          = filter_state(:pending)
+        .col-1
+          = filter_state(:approved)
+        .col-1
+          = filter_state(:rejected)
+        .col-1
+          = filter_state(:all)
+  .row
     .col-1
     .col-3
       - @events.each do |event|

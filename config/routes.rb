@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'admin/events#index'
-    resources :events
+    resources :events do
+      resources :state, only: [:create]
+    end
   end
 
   devise_for :users
