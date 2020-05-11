@@ -4,18 +4,22 @@
 class EventsQuery
   def initialize(initial_scope, params)
     @initial_scope = initial_scope
-    @params = params
+    @state = params[:state]
   end
 
   def call
-    return @initial_scope if state.nil?
+    return @initial_scope if event_state.nil?
 
-    @initial_scope.send(state)
+    @initial_scope.send(event_state)
   end
 
   private
 
-  def state
-    @params[:state]
+  def event_state
+    if @state.present? && Event.aasm(:state).states.map(&:name).include?(@state.to_sym)
+      @state
+    else
+      :all
+    end
   end
 end

@@ -12,9 +12,8 @@
         p= e.attributes :organizer_telegram
         p= e.attributes :link
         .row
-          - @event.aasm(:state).permitted_transitions.each do |transition|
-            = @event.switch_status_bar(transition)
-
+          - @event.switch_status_bar.each do |button|
+            = button
   .row
     .col-1
     .col
