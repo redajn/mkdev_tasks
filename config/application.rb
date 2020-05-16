@@ -13,5 +13,5 @@ module MkdevTasks
 end
 
 Mailgun.configure do |config|
-  config.api_key = Rails.application&.credentials.mailer[:api_key]
+  config.api_key = Rails.application.credentials.mailer[:api_key] unless Rails.env.test?
 end
