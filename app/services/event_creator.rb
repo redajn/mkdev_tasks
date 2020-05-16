@@ -23,11 +23,11 @@ class EventCreator < ApplicationService
     mg_client = Mailgun::Client.new
     mg_client.enable_test_mode! if Rails.env.test?
 
-    message_params = { from:    "bob@#{Rails.application.credentials.mailer[:domain]}",
+    message_params = { from:    "bob@sandbox616bec72527142fdb99f50493a72fb1f.mailgun.org",
                        to:      'vengoshara@gmail.com',
                        subject: 'The Ruby SDK is awesome!',
                        text:    'It is really easy to send a message!' }
 
-    mg_client.send_message Rails.application.credentials.mailer[:domain], message_params
+    mg_client.send_message sandbox616bec72527142fdb99f50493a72fb1f.mailgun.org, message_params
   end
 end
