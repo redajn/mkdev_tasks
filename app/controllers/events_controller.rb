@@ -29,7 +29,7 @@ class EventsController < ApplicationController
 
   def create
     @event = EventCreator.call(event_params, current_user)
-    if @event.save
+    if @event.present?
       redirect_to event_path(@event), notice: t('.success')
     else
       render :new, notice: t('.fail')
