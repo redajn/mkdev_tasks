@@ -28,7 +28,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = EventCreator.call(event_params, current_user)
+    @event = CreateEvent.call(event_params, current_user, request.base_url)
     if @event.present?
       redirect_to event_path(@event), notice: t('.success')
     else

@@ -25,6 +25,8 @@ gem 'aasm'
 gem 'draper'
 gem 'rest-client'
 gem 'mailgun-ruby'
+gem 'dry-monads'
+gem 'que'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
