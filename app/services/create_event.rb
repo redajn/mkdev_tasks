@@ -4,8 +4,6 @@ require 'mailgun-ruby'
 
 # Create method service
 class CreateEvent < ApplicationService
-  include Dry::Monads[:result]
-  include Dry::Monads::Do.for(:call)
 
   def initialize(event_params, current_user, url)
     @url = url
